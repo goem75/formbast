@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita Acara Serah Terima</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Berita Acara Serah Terima</h2>
+    <form id="serahTerimaForm">
+        <!-- Header Information -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="ownerName">Nama Pemilik</label>
+                <input type="text" id="ownerName" name="nama_pemilik" required>
+            </div>
+            <div class="form-group">
+                <label for="storeName">Nama Toko/Kios</label>
+                <input type="text" id="storeName" name="nama_toko_kios" required>
+            </div>
+            <div class="form-group small">
+                <label for="kavling">Kavling</label>
+                <input type="text" id="kavling" name="kavling" required>
+            </div>
+            <div class="form-group small">
+                <label for="date">Tanggal</label>
+                <input type="date" id="date" name="tanggal" required>
+            </div>
+        </div>
+          
+        <!-- Main Sections Container -->
+        <div class="sections-container">
+            <!-- KWH Meter Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h3><img src="assets/electricity.png" alt="Electricity Icon" class="icon-header">
+                        KWH Meter
+                    </h3>
+                    <input type="checkbox" id="kwhCheck" class="section-toggle">
+                </div>
+                <div class="section-content" id="kwhContent">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kwhReg">No Registrasi</label>
+                            <input type="text" id="kwhReg" name="no_registrasi_kwh" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentTransformer">Current Transformer</label>
+                            <div class="ct-input-group">
+                                <div class="radio-group">
+                                    <input type="radio" id="ctYes" name="ctStatus" value="ada" required>
+                                    <label for="ctYes">Ada</label>
+                                    <input type="radio" id="ctNo" name="ctStatus" value="tidak">
+                                    <label for="ctNo">Tidak</label>
+                                </div>
+                                <input type="text" id="currentTransformer" name="nilai_ct" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kwhKva">KVA Terpasang</label>
+                            <input type="number" id="kwhKva" name="kva_terpasang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kwhAmp">Ampere Meter</label>
+                            <input type="number" id="kwhAmp" name="ampere_meter" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kwhPhase">Phase</label>
+                            <input type="number" id="kwhPhase" name="phase" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kwhReading">Angka Stand Awal</label>
+                            <input type="number" id="kwhReading" name="angka_stand_awal" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meter Air Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h3><img src="assets/water.png" alt="Water Icon" class="icon-header">
+                        Meter Air
+                    </h3>
+                    <input type="checkbox" id="waterCheck" class="section-toggle">
+                </div>
+                <div class="section-content" id="waterContent">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="waterReading">Angka Stand Awal</label>
+                            <input type="number" id="waterReading" name="angka_stand_awal_air" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="waterReg">No Registrasi</label>
+                            <input type="text" id="waterReg" name="no_registrasi_air" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Telepon Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h3><img src="assets/phone.png" alt="Water Icon" class="icon-header">
+                        Telepon
+                    </h3>
+                    <input type="checkbox" id="phoneCheck" class="section-toggle">
+                </div>
+                <div class="section-content" id="phoneContent">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phoneCount">Jumlah Line</label>
+                            <input type="number" id="phoneCount" name="jumlah_line" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Nomor Telepon</label>
+                            <input type="text" id="phoneNumber" name="nomor_telepon" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tanda Tangan Section -->
+            <div class="section">
+                <h3>Tanda Tangan</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="managementName">Pihak I: Manajemen BTC Fashion Mall</label>
+                        <input type="text" id="managementName" name="management_name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tenantName">Pihak II: Penyewa/Wakil</label>
+                        <input type="text" id="tenantName" name="tenant_name" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="button" onclick="generatePDF()">Cetak PDF</button>
+            <button type="button" onclick="clearForm()">Reset Form</button>
+            <button type="button" class="btn-submit" onclick="submitForm()">Submit Form</button>
+        </div>
+               
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
